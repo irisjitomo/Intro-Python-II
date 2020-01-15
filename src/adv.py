@@ -1,5 +1,5 @@
 from room import Room
-
+from player import Player 
 # Declare all the rooms
 
 room = {
@@ -38,9 +38,49 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+player = Player(room['outside']) # setting player's initial location
+# print('Welcome to my adventure game')
+# print('You will move from room to room using the "wasd" keys')
+# print('If you wish to quit: just press "q"')
+print('1', player)
+print('2', player.location)
 
+# user choices
+user = input("[w] North  [s] South  [d] East  [a] West  [q] Quit\n")
 # Write a loop that:
 #
+while not user == 'q':
+    if user == 'w':
+        # if player.location.n_to:
+        try:
+            player.location = player.location.n_to
+            print(player.location)
+        except:
+            print('choose another direction')
+        user = input("[w] North  [s] South  [d] East  [a] West  [q] Quit\n")
+    elif user == 's':
+        try:
+            player.location = player.location.s_to
+            print(player.location)
+        except:
+            print('choose another direction')
+        user = input("[w] North  [s] South  [d] East  [a] West  [q] Quit\n")
+    elif user == 'd':
+        try:
+            player.location = player.location.e_to
+            print(player.location)
+        except:
+            print('choose another direction')
+        user = input("[w] North  [s] South  [d] East  [a] West  [q] Quit\n")
+    elif user == 'a':
+        try:
+            player.location = player.location.e_to
+            print(player.location)
+        except:
+            print('choose another direction')
+        user = input("[w] North  [s] South  [d] East  [a] West  [q] Quit\n")
+print('game over')
+        
 # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
